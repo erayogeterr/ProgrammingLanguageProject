@@ -12,7 +12,6 @@ import com.programmingLanguage.programmingLanguage.business.dtos.response.Progra
 import com.programmingLanguage.programmingLanguage.business.dtos.response.ProgrammingLanguageTechnologyResponse.GetByIdProgrammingLanguageTechnologyResponse;
 import com.programmingLanguage.programmingLanguage.core.utilities.mappers.ModelMapperService;
 import com.programmingLanguage.programmingLanguage.dataAccess.abstracts.ProgrammingLanguageTechnologyRepository;
-import com.programmingLanguage.programmingLanguage.entities.concretes.ProgrammingLanguage;
 import com.programmingLanguage.programmingLanguage.entities.concretes.ProgrammingLanguageTechnology;
 
 import lombok.AllArgsConstructor;

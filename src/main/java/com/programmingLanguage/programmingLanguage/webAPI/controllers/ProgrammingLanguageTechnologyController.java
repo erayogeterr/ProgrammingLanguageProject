@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,7 +19,6 @@ import com.programmingLanguage.programmingLanguage.business.dtos.request.Program
 import com.programmingLanguage.programmingLanguage.business.dtos.response.ProgrammingLanguageTechnologyResponse.GetAllProgrammingLanguageTechnologyResponse;
 import com.programmingLanguage.programmingLanguage.business.dtos.response.ProgrammingLanguageTechnologyResponse.GetByIdProgrammingLanguageTechnologyResponse;
 
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import lombok.AllArgsConstructor;
 
 @RestController
@@ -42,7 +42,7 @@ public class ProgrammingLanguageTechnologyController {
 	
 	@PostMapping
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public CreateProgrammingLanguageTechnologyRequest add(@RequestBody() CreateProgrammingLanguageTechnologyRequest createProgrammingLanguageTechnologyRequest) {
+	public CreateProgrammingLanguageTechnologyRequest add(@RequestBody () CreateProgrammingLanguageTechnologyRequest createProgrammingLanguageTechnologyRequest) {
 		return this.programmingLanguageTechnologyService.add(createProgrammingLanguageTechnologyRequest);
 	}
 	
