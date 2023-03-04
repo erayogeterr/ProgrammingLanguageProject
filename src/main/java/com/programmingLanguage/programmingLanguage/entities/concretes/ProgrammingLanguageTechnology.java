@@ -30,8 +30,8 @@ public class ProgrammingLanguageTechnology {
 	@Column(name = "name")
 	private String name;
 	
-	@ManyToOne
-	@JoinColumn(name = "programmingLanguageId")
+	@ManyToOne()
+	@JoinColumn(name = "programming_language_id")
 	private ProgrammingLanguage programmingLanguage;
 	
 }
