@@ -1,0 +1,18 @@
+package com.programmingLanguage.programmingLanguage.business.abstracts;
+
+import java.util.List;
+
+import com.programmingLanguage.programmingLanguage.business.dtos.request.ProgrammingLanguageTechnologyRequest.CreateProgrammingLanguageTechnologyRequest;
+import com.programmingLanguage.programmingLanguage.business.dtos.request.ProgrammingLanguageTechnologyRequest.UpdateProgrammingLanguageTechnologyRequest;
+import com.programmingLanguage.programmingLanguage.business.dtos.response.ProgrammingLanguageTechnologyResponse.GetAllProgrammingLanguageTechnologyResponse;
+import com.programmingLanguage.programmingLanguage.business.dtos.response.ProgrammingLanguageTechnologyResponse.GetByIdProgrammingLanguageTechnologyResponse;
+
+public interface ProgrammingLanguageTechnologyService {
+
+	List<GetAllProgrammingLanguageTechnologyResponse> getAll();
+	GetByIdProgrammingLanguageTechnologyResponse getByProgrammingLanguageTechnologyId(int id);
+	CreateProgrammingLanguageTechnologyRequest add(CreateProgrammingLanguageTechnologyRequest createProgrammingLanguageTechnologyRequest);
+	UpdateProgrammingLanguageTechnologyRequest update(int id,UpdateProgrammingLanguageTechnologyRequest updateProgrammingLanguageTechnologyRequest);
+	void delete(int id);
+	
+}
