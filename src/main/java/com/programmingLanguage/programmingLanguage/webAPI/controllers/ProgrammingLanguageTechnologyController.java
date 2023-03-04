@@ -42,13 +42,13 @@ public class ProgrammingLanguageTechnologyController {
 	
 	@PostMapping
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public CreateProgrammingLanguageTechnologyRequest add(@RequestBody () CreateProgrammingLanguageTechnologyRequest createProgrammingLanguageTechnologyRequest) {
+	public CreateProgrammingLanguageTechnologyRequest add(@RequestBody() CreateProgrammingLanguageTechnologyRequest createProgrammingLanguageTechnologyRequest) {
 		return this.programmingLanguageTechnologyService.add(createProgrammingLanguageTechnologyRequest);
 	}
 	
 	@PutMapping
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public UpdateProgrammingLanguageTechnologyRequest update(@RequestBody int id, UpdateProgrammingLanguageTechnologyRequest updateProgrammingLanguageTechnologyRequest) {
+	public UpdateProgrammingLanguageTechnologyRequest update(@RequestBody() int id, UpdateProgrammingLanguageTechnologyRequest updateProgrammingLanguageTechnologyRequest) {
 		return this.programmingLanguageTechnologyService.update(id, updateProgrammingLanguageTechnologyRequest);
 	}
 	
