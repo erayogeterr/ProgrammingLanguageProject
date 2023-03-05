@@ -50,6 +50,7 @@ public class ProgrammingLanguageManager implements ProgrammingLanguageService{
 
 	@Override
 	public UpdateProgrammingLanguageRequest update(int id, UpdateProgrammingLanguageRequest updateProgrammingLanguageRequest) {
+		this.programmingLanguageRulesService.checkIfProgrammingLanguageNameExists(updateProgrammingLanguageRequest.getName());
 		ProgrammingLanguage programmingLanguage = this.modelMapperService.forRequest().map(updateProgrammingLanguageRequest, ProgrammingLanguage.class);
 		this.programmingLanguageRepository.save(programmingLanguage);
 		return updateProgrammingLanguageRequest;
