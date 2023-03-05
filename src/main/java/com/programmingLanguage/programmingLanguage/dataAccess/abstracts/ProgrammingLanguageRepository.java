@@ -6,4 +6,5 @@ import com.programmingLanguage.programmingLanguage.entities.concretes.Programmin
 
 public interface ProgrammingLanguageRepository extends JpaRepository<ProgrammingLanguage, Integer>{
 
+	boolean existsByName(String name);
 }
