@@ -34,7 +34,7 @@ public class ProgrammingLanguageManager implements ProgrammingLanguageService{
 
 	@Override
 	public GetByIdProgrammingLanguageResponse getByProgrammingLanguageId(int id) {
-		ProgrammingLanguage programmingLanguage = this.programmingLanguageRepository.findById(id).orElseThrow();
+		ProgrammingLanguage programmingLanguage = this.programmingLanguageRules.checkIfGetByProgrammingLanguageId(id);
 		GetByIdProgrammingLanguageResponse getByIdProgrammingLanguageResponse = this.modelMapperService.forResponse().map(programmingLanguage, GetByIdProgrammingLanguageResponse.class);
 		return getByIdProgrammingLanguageResponse;
 	}
@@ -57,7 +57,7 @@ public class ProgrammingLanguageManager implements ProgrammingLanguageService{
 
 	@Override
 	public void delete(int id) {
-		this.programmingLanguageRepository.deleteById(id);
+		this.programmingLanguageRules.checkIfDeleteByIdProgrammingLanguage(id);
 	}
 
 }

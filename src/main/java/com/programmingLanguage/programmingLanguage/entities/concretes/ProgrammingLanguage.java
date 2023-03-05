@@ -2,6 +2,7 @@ package com.programmingLanguage.programmingLanguage.entities.concretes;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -31,7 +32,7 @@ public class ProgrammingLanguage {
 	@Column(name = "name")
 	private String name;
 	
-	@OneToMany(mappedBy = "programmingLanguage")
+	@OneToMany(mappedBy = "programmingLanguage" , cascade = CascadeType.ALL)
 	private List<ProgrammingLanguageTechnology> programmingLanguageTechnologies;
 
 }
