@@ -10,7 +10,7 @@ import com.programmingLanguage.programmingLanguage.business.dtos.request.Program
 import com.programmingLanguage.programmingLanguage.business.dtos.request.ProgrammingLanguageRequest.UpdateProgrammingLanguageRequest;
 import com.programmingLanguage.programmingLanguage.business.dtos.response.ProgrammingLanguageResponse.GetAllProgrammingLanguageResponse;
 import com.programmingLanguage.programmingLanguage.business.dtos.response.ProgrammingLanguageResponse.GetByIdProgrammingLanguageResponse;
-import com.programmingLanguage.programmingLanguage.business.rules.programmingLanguageRules.ProgrammingLanguageRules;
+import com.programmingLanguage.programmingLanguage.business.rules.programmingLanguageRules.abstracts.ProgrammingLanguageRulesService;
 import com.programmingLanguage.programmingLanguage.core.utilities.mappers.ModelMapperService;
 import com.programmingLanguage.programmingLanguage.dataAccess.abstracts.ProgrammingLanguageRepository;
 import com.programmingLanguage.programmingLanguage.entities.concretes.ProgrammingLanguage;
@@ -23,7 +23,7 @@ public class ProgrammingLanguageManager implements ProgrammingLanguageService{
 	
 	private ProgrammingLanguageRepository programmingLanguageRepository;
 	private ModelMapperService modelMapperService;
-	private ProgrammingLanguageRules programmingLanguageRules;
+	private ProgrammingLanguageRulesService programmingLanguageRulesService;
 	
 	@Override
 	public List<GetAllProgrammingLanguageResponse> getAll() {
@@ -34,15 +34,15 @@ public class ProgrammingLanguageManager implements ProgrammingLanguageService{
 
 	@Override
 	public GetByIdProgrammingLanguageResponse getByProgrammingLanguageId(int id) {
-		ProgrammingLanguage programmingLanguage = this.programmingLanguageRules.checkIfGetByIdProgrammingLanguage(id);
+		ProgrammingLanguage programmingLanguage = this.programmingLanguageRulesService.checkIfGetByIdProgrammingLanguage(id);
 		GetByIdProgrammingLanguageResponse getByIdProgrammingLanguageResponse = this.modelMapperService.forResponse().map(programmingLanguage, GetByIdProgrammingLanguageResponse.class);
 		return getByIdProgrammingLanguageResponse;
 	}
 
 	@Override
 	public CreateProgrammingLanguageRequest add(CreateProgrammingLanguageRequest createProgrammingLanguageRequest) {
-		this.programmingLanguageRules.checkIfProgrammingLanguageNameExists(createProgrammingLanguageRequest.getName());
-		this.programmingLanguageRules.checkIfProgrammingLanguageBlankAndNull(createProgrammingLanguageRequest);
+		this.programmingLanguageRulesService.checkIfProgrammingLanguageNameExists(createProgrammingLanguageRequest.getName());
+		this.programmingLanguageRulesService.checkIfProgrammingLanguageBlankAndNull(createProgrammingLanguageRequest);
 		ProgrammingLanguage programmingLanguage = this.modelMapperService.forRequest().map(createProgrammingLanguageRequest, ProgrammingLanguage.class); // createBrandRequest // nesnesini Brand // classına maple.
 		this.programmingLanguageRepository.save(programmingLanguage);
 		return createProgrammingLanguageRequest;
@@ -57,7 +57,7 @@ public class ProgrammingLanguageManager implements ProgrammingLanguageService{
 
 	@Override
 	public void delete(int id) {
-		this.programmingLanguageRules.checkIfDeleteByIdProgrammingLanguage(id);
+		this.programmingLanguageRulesService.checkIfDeleteByIdProgrammingLanguage(id);
 	}
 
 }

@@ -1,9 +1,10 @@
-package com.programmingLanguage.programmingLanguage.business.rules.programmingLanguageRules;
+package com.programmingLanguage.programmingLanguage.business.rules.programmingLanguageRules.concretes;
 
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 import com.programmingLanguage.programmingLanguage.business.dtos.request.ProgrammingLanguageRequest.CreateProgrammingLanguageRequest;
+import com.programmingLanguage.programmingLanguage.business.rules.programmingLanguageRules.abstracts.ProgrammingLanguageRulesService;
 import com.programmingLanguage.programmingLanguage.core.utilities.exceptions.BusinessException;
 import com.programmingLanguage.programmingLanguage.dataAccess.abstracts.ProgrammingLanguageRepository;
 import com.programmingLanguage.programmingLanguage.entities.concretes.ProgrammingLanguage;
@@ -12,7 +13,7 @@ import lombok.AllArgsConstructor;
 
 @Service
 @AllArgsConstructor
-public class ProgrammingLanguageRules {
+public class ProgrammingLanguageRulesManager implements ProgrammingLanguageRulesService{
 
 	private ProgrammingLanguageRepository programmingLanguageRepository;
 	
