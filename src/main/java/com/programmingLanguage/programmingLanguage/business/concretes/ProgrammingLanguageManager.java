@@ -42,6 +42,7 @@ public class ProgrammingLanguageManager implements ProgrammingLanguageService{
 	@Override
 	public CreateProgrammingLanguageRequest add(CreateProgrammingLanguageRequest createProgrammingLanguageRequest) {
 		this.programmingLanguageRules.checkIfProgrammingLanguageNameExists(createProgrammingLanguageRequest.getName());
+		this.programmingLanguageRules.checkIfProgrammingLanguageBlankAndNull(createProgrammingLanguageRequest);
 		ProgrammingLanguage programmingLanguage = this.modelMapperService.forRequest().map(createProgrammingLanguageRequest, ProgrammingLanguage.class); // createBrandRequest // nesnesini Brand // classına maple.
 		this.programmingLanguageRepository.save(programmingLanguage);
 		return createProgrammingLanguageRequest;

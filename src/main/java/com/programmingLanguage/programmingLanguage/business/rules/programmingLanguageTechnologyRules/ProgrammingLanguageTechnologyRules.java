@@ -2,6 +2,7 @@ package com.programmingLanguage.programmingLanguage.business.rules.programmingLa
 
 import org.springframework.stereotype.Service;
 
+import com.programmingLanguage.programmingLanguage.business.dtos.request.ProgrammingLanguageTechnologyRequest.CreateProgrammingLanguageTechnologyRequest;
 import com.programmingLanguage.programmingLanguage.core.utilities.exceptions.BusinessException;
 import com.programmingLanguage.programmingLanguage.dataAccess.abstracts.ProgrammingLanguageTechnologyRepository;
 
@@ -16,6 +17,12 @@ public class ProgrammingLanguageTechnologyRules {
 	public void checkIfProgrammingLanguageTechnologyName(String name) {
 		if(programmingLanguageTechnologyRepository.existsByName(name)) {
 			throw new BusinessException("Programming Language already exists.");
+		}
+	}
+	
+	public void checkIfProgrammingLanguageTechnologyBlankAndNull(CreateProgrammingLanguageTechnologyRequest createProgrammingLanguageTechnologyRequest) {
+		if(createProgrammingLanguageTechnologyRequest.getName().isBlank() || createProgrammingLanguageTechnologyRequest.getName().isEmpty()) {
+			throw new BusinessException("The programming language cannot be empty.");
 		}
 	}
 }
