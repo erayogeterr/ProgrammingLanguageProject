@@ -28,7 +28,7 @@ public class ProgrammingLanguageRules {
 		}
 	}
 	
-	public ProgrammingLanguage checkIfGetByProgrammingLanguageId(int id) {
+	public ProgrammingLanguage checkIfGetByIdProgrammingLanguage(int id) {
 		Optional<ProgrammingLanguage> programmingLanguage = this.programmingLanguageRepository.findById(id);
 		if(programmingLanguage.isPresent()) {
 			return programmingLanguageRepository.findById(id).get();

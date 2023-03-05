@@ -34,7 +34,7 @@ public class ProgrammingLanguageManager implements ProgrammingLanguageService{
 
 	@Override
 	public GetByIdProgrammingLanguageResponse getByProgrammingLanguageId(int id) {
-		ProgrammingLanguage programmingLanguage = this.programmingLanguageRules.checkIfGetByProgrammingLanguageId(id);
+		ProgrammingLanguage programmingLanguage = this.programmingLanguageRules.checkIfGetByIdProgrammingLanguage(id);
 		GetByIdProgrammingLanguageResponse getByIdProgrammingLanguageResponse = this.modelMapperService.forResponse().map(programmingLanguage, GetByIdProgrammingLanguageResponse.class);
 		return getByIdProgrammingLanguageResponse;
 	}
