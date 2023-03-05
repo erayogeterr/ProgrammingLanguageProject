@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ValidationProblemsDetails extends ProblemDetails{
+public class ValidationProblemDetails extends ProblemDetails{
 
 	private Map<String, String> validationErrors;
 }
