@@ -10,6 +10,7 @@ import com.programmingLanguage.programmingLanguage.business.dtos.request.Program
 import com.programmingLanguage.programmingLanguage.business.dtos.request.ProgrammingLanguageTechnologyRequest.UpdateProgrammingLanguageTechnologyRequest;
 import com.programmingLanguage.programmingLanguage.business.dtos.response.ProgrammingLanguageTechnologyResponse.GetAllProgrammingLanguageTechnologyResponse;
 import com.programmingLanguage.programmingLanguage.business.dtos.response.ProgrammingLanguageTechnologyResponse.GetByIdProgrammingLanguageTechnologyResponse;
+import com.programmingLanguage.programmingLanguage.business.rules.programmingLanguageTechnologyRules.ProgrammingLanguageTechnologyRules;
 import com.programmingLanguage.programmingLanguage.core.utilities.mappers.ModelMapperService;
 import com.programmingLanguage.programmingLanguage.dataAccess.abstracts.ProgrammingLanguageTechnologyRepository;
 import com.programmingLanguage.programmingLanguage.entities.concretes.ProgrammingLanguageTechnology;
@@ -22,6 +23,7 @@ public class ProgrammingLanguageTechnologyManager implements ProgrammingLanguage
 	
 	private ProgrammingLanguageTechnologyRepository programmingLanguageTechnologyRepository;
 	private ModelMapperService modelMapperService;
+	private ProgrammingLanguageTechnologyRules programmingLanguageTechnologyRules;
 	
 	@Override
 	public List<GetAllProgrammingLanguageTechnologyResponse> getAll() {
@@ -39,6 +41,7 @@ public class ProgrammingLanguageTechnologyManager implements ProgrammingLanguage
 
 	@Override
 	public CreateProgrammingLanguageTechnologyRequest add(CreateProgrammingLanguageTechnologyRequest createProgrammingLanguageTechnologyRequest) {
+		this.programmingLanguageTechnologyRules.checkIfProgrammingLanguageTechnologyName(createProgrammingLanguageTechnologyRequest.getName());
 		ProgrammingLanguageTechnology programmingLanguageTechnology = this.modelMapperService.forRequest().map(createProgrammingLanguageTechnologyRequest, ProgrammingLanguageTechnology.class);
 		this.programmingLanguageTechnologyRepository.save(programmingLanguageTechnology);
 		return createProgrammingLanguageTechnologyRequest;
