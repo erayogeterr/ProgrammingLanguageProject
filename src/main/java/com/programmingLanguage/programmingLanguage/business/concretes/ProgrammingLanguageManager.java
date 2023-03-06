@@ -1,7 +1,9 @@
 package com.programmingLanguage.programmingLanguage.business.concretes;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.springframework.stereotype.Service;
 
@@ -11,6 +13,7 @@ import com.programmingLanguage.programmingLanguage.business.dtos.request.Program
 import com.programmingLanguage.programmingLanguage.business.dtos.response.ProgrammingLanguageResponse.GetAllProgrammingLanguageResponse;
 import com.programmingLanguage.programmingLanguage.business.dtos.response.ProgrammingLanguageResponse.GetByIdProgrammingLanguageResponse;
 import com.programmingLanguage.programmingLanguage.business.rules.programmingLanguageRules.abstracts.ProgrammingLanguageRulesService;
+import com.programmingLanguage.programmingLanguage.core.utilities.exceptions.BusinessException;
 import com.programmingLanguage.programmingLanguage.core.utilities.mappers.ModelMapperService;
 import com.programmingLanguage.programmingLanguage.dataAccess.abstracts.ProgrammingLanguageRepository;
 import com.programmingLanguage.programmingLanguage.entities.concretes.ProgrammingLanguage;
@@ -49,8 +52,9 @@ public class ProgrammingLanguageManager implements ProgrammingLanguageService{
 	}
 
 	@Override
-	public UpdateProgrammingLanguageRequest update(int id, UpdateProgrammingLanguageRequest updateProgrammingLanguageRequest) {
+	public UpdateProgrammingLanguageRequest update(int id,UpdateProgrammingLanguageRequest updateProgrammingLanguageRequest) {
 		this.programmingLanguageRulesService.checkIfProgrammingLanguageNameExists(updateProgrammingLanguageRequest.getName());
+		this.programmingLanguageRulesService.checkIfGetByIdProgrammingLanguage(updateProgrammingLanguageRequest.getId());
 		ProgrammingLanguage programmingLanguage = this.modelMapperService.forRequest().map(updateProgrammingLanguageRequest, ProgrammingLanguage.class);
 		this.programmingLanguageRepository.save(programmingLanguage);
 		return updateProgrammingLanguageRequest;
@@ -60,5 +64,4 @@ public class ProgrammingLanguageManager implements ProgrammingLanguageService{
 	public void delete(int id) {
 		this.programmingLanguageRulesService.checkIfDeleteByIdProgrammingLanguage(id);
 	}
-
 }

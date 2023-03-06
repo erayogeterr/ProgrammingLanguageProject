@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 import com.programmingLanguage.programmingLanguage.business.dtos.request.ProgrammingLanguageRequest.CreateProgrammingLanguageRequest;
+import com.programmingLanguage.programmingLanguage.business.dtos.request.ProgrammingLanguageRequest.UpdateProgrammingLanguageRequest;
 import com.programmingLanguage.programmingLanguage.business.rules.programmingLanguageRules.abstracts.ProgrammingLanguageRulesService;
 import com.programmingLanguage.programmingLanguage.core.utilities.exceptions.BusinessException;
 import com.programmingLanguage.programmingLanguage.dataAccess.abstracts.ProgrammingLanguageRepository;
@@ -45,5 +46,18 @@ public class ProgrammingLanguageRulesManager implements ProgrammingLanguageRules
 		} else {
 			throw new BusinessException("There is no programming language registered to this id number.");
 		}
+	}
+
+	@Override
+	public void chechIfUpdateByIdProgrammingLanguage(int id,UpdateProgrammingLanguageRequest updateProgrammingLanguageRequest) {
+		Optional<ProgrammingLanguage> programmingLanguage = this.programmingLanguageRepository.findById(id);
+		if(programmingLanguage.isPresent()) {
+			ProgrammingLanguage languageToUpdate = programmingLanguage.get();
+			languageToUpdate.setName(updateProgrammingLanguageRequest.getName());
+			 programmingLanguageRepository.save(languageToUpdate);
+		} else {
+			throw new BusinessException("There is no programming language registered to this id number.");
+		}
+	
 	}
 }

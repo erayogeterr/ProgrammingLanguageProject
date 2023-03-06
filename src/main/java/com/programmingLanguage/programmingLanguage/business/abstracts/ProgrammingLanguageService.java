@@ -12,7 +12,7 @@ public interface ProgrammingLanguageService {
 	List<GetAllProgrammingLanguageResponse> getAll();
 	GetByIdProgrammingLanguageResponse getByProgrammingLanguageId(int id);
 	CreateProgrammingLanguageRequest add(CreateProgrammingLanguageRequest createProgrammingLanguageRequest);
-	UpdateProgrammingLanguageRequest update(int id, UpdateProgrammingLanguageRequest updateProgrammingLanguageRequest);
+	UpdateProgrammingLanguageRequest update(int id,UpdateProgrammingLanguageRequest updateProgrammingLanguageRequest);
 	void delete(int id);
 
 }

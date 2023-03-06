@@ -50,6 +50,7 @@ public class ProgrammingLanguageTechnologyManager implements ProgrammingLanguage
 
 	@Override
 	public UpdateProgrammingLanguageTechnologyRequest update(int id,UpdateProgrammingLanguageTechnologyRequest updateProgrammingLanguageTechnologyRequest) {
+		this.programmingLanguageTechnologyRules.checkIfProgrammingLanguageTechnologyName(updateProgrammingLanguageTechnologyRequest.getName());
 		ProgrammingLanguageTechnology programmingLanguageTechnology = this.modelMapperService.forRequest().map(updateProgrammingLanguageTechnologyRequest, ProgrammingLanguageTechnology.class);
 		this.programmingLanguageTechnologyRepository.save(programmingLanguageTechnology);
 		return updateProgrammingLanguageTechnologyRequest;
