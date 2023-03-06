@@ -47,17 +47,4 @@ public class ProgrammingLanguageRulesManager implements ProgrammingLanguageRules
 			throw new BusinessException("There is no programming language registered to this id number.");
 		}
 	}
-
-	@Override
-	public void chechIfUpdateByIdProgrammingLanguage(int id,UpdateProgrammingLanguageRequest updateProgrammingLanguageRequest) {
-		Optional<ProgrammingLanguage> programmingLanguage = this.programmingLanguageRepository.findById(id);
-		if(programmingLanguage.isPresent()) {
-			ProgrammingLanguage languageToUpdate = programmingLanguage.get();
-			languageToUpdate.setName(updateProgrammingLanguageRequest.getName());
-			 programmingLanguageRepository.save(languageToUpdate);
-		} else {
-			throw new BusinessException("There is no programming language registered to this id number.");
-		}
-	
-	}
 }
