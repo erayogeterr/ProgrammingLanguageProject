@@ -8,6 +8,5 @@ public interface ProgrammingLanguageRulesService {
 	void checkIfProgrammingLanguageNameExists(String name);
 	void checkIfProgrammingLanguageBlankAndNull(CreateProgrammingLanguageRequest createProgrammingLanguageRequest);
 	void checkIfDeleteByIdProgrammingLanguage(int id);
-	void chechIfUpdateByIdProgrammingLanguage(int id, UpdateProgrammingLanguageRequest updateProgrammingLanguageRequest);
 	ProgrammingLanguage checkIfGetByIdProgrammingLanguage(int id);
 }
