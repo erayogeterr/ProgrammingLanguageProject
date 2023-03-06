@@ -3,8 +3,8 @@ package com.programmingLanguage.programmingLanguage.business.rules.programmingLa
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
+
 import com.programmingLanguage.programmingLanguage.business.dtos.request.ProgrammingLanguageRequest.CreateProgrammingLanguageRequest;
-import com.programmingLanguage.programmingLanguage.business.dtos.request.ProgrammingLanguageRequest.UpdateProgrammingLanguageRequest;
 import com.programmingLanguage.programmingLanguage.business.rules.programmingLanguageRules.abstracts.ProgrammingLanguageRulesService;
 import com.programmingLanguage.programmingLanguage.core.utilities.exceptions.BusinessException;
 import com.programmingLanguage.programmingLanguage.dataAccess.abstracts.ProgrammingLanguageRepository;
@@ -18,8 +18,8 @@ public class ProgrammingLanguageRulesManager implements ProgrammingLanguageRules
 
 	private ProgrammingLanguageRepository programmingLanguageRepository;
 	
-	public void checkIfProgrammingLanguageNameExists(String name) {
-		if(programmingLanguageRepository.existsByName(name)) {
+	public void checkIfProgrammingLanguageNameExistsAndIgnoreCase(String name) {
+		if(programmingLanguageRepository.existsByName(name) || name.equalsIgnoreCase(name)) {
 			throw new BusinessException("Programming Language already exists.");
 		}
 	}
@@ -34,15 +34,6 @@ public class ProgrammingLanguageRulesManager implements ProgrammingLanguageRules
 		Optional<ProgrammingLanguage> programmingLanguage = this.programmingLanguageRepository.findById(id);
 		if(programmingLanguage.isPresent()) {
 			return programmingLanguageRepository.findById(id).get();
-		} else {
-			throw new BusinessException("There is no programming language registered to this id number.");
-		}
-	}
-	
-	public void checkIfDeleteByIdProgrammingLanguage(int id) {
-		Optional<ProgrammingLanguage> programmingLanguage = this.programmingLanguageRepository.findById(id);
-		if(programmingLanguage.isPresent()) {
-			this.programmingLanguageRepository.deleteById(id);
 		} else {
 			throw new BusinessException("There is no programming language registered to this id number.");
 		}

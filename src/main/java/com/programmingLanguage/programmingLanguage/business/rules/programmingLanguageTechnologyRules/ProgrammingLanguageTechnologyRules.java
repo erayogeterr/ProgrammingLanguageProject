@@ -16,13 +16,13 @@ public class ProgrammingLanguageTechnologyRules {
 	
 	public void checkIfProgrammingLanguageTechnologyName(String name) {
 		if(programmingLanguageTechnologyRepository.existsByName(name)) {
-			throw new BusinessException("Programming Language already exists.");
+			throw new BusinessException("Programming Language technology already exists.");
 		}
 	}
 	
 	public void checkIfProgrammingLanguageTechnologyBlankAndNull(CreateProgrammingLanguageTechnologyRequest createProgrammingLanguageTechnologyRequest) {
 		if(createProgrammingLanguageTechnologyRequest.getName().isBlank() || createProgrammingLanguageTechnologyRequest.getName().isEmpty()) {
-			throw new BusinessException("The programming language cannot be empty.");
+			throw new BusinessException("The programming language technology cannot be empty.");
 		}
 	}
 }
