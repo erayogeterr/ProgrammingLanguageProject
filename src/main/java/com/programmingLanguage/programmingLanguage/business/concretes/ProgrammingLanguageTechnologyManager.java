@@ -10,7 +10,7 @@ import com.programmingLanguage.programmingLanguage.business.dtos.request.Program
 import com.programmingLanguage.programmingLanguage.business.dtos.request.ProgrammingLanguageTechnologyRequest.UpdateProgrammingLanguageTechnologyRequest;
 import com.programmingLanguage.programmingLanguage.business.dtos.response.ProgrammingLanguageTechnologyResponse.GetAllProgrammingLanguageTechnologyResponse;
 import com.programmingLanguage.programmingLanguage.business.dtos.response.ProgrammingLanguageTechnologyResponse.GetByIdProgrammingLanguageTechnologyResponse;
-import com.programmingLanguage.programmingLanguage.business.rules.programmingLanguageTechnologyRules.ProgrammingLanguageTechnologyRules;
+import com.programmingLanguage.programmingLanguage.business.rules.programmingLanguageTechnologyRules.concretes.ProgrammingLanguageTechnologyRules;
 import com.programmingLanguage.programmingLanguage.core.utilities.mappers.ModelMapperService;
 import com.programmingLanguage.programmingLanguage.dataAccess.abstracts.ProgrammingLanguageTechnologyRepository;
 import com.programmingLanguage.programmingLanguage.entities.concretes.ProgrammingLanguageTechnology;
@@ -41,7 +41,7 @@ public class ProgrammingLanguageTechnologyManager implements ProgrammingLanguage
 
 	@Override
 	public CreateProgrammingLanguageTechnologyRequest add(CreateProgrammingLanguageTechnologyRequest createProgrammingLanguageTechnologyRequest) {
-		this.programmingLanguageTechnologyRules.checkIfProgrammingLanguageTechnologyName(createProgrammingLanguageTechnologyRequest.getName());
+		this.programmingLanguageTechnologyRules.checkIfProgrammingLanguageNameTechnologyExistsAndIgnoreCase(createProgrammingLanguageTechnologyRequest.getName());
 		this.programmingLanguageTechnologyRules.checkIfProgrammingLanguageTechnologyBlankAndNull(createProgrammingLanguageTechnologyRequest);
 		ProgrammingLanguageTechnology programmingLanguageTechnology = this.modelMapperService.forRequest().map(createProgrammingLanguageTechnologyRequest, ProgrammingLanguageTechnology.class);
 		this.programmingLanguageTechnologyRepository.save(programmingLanguageTechnology);
@@ -50,7 +50,8 @@ public class ProgrammingLanguageTechnologyManager implements ProgrammingLanguage
 
 	@Override
 	public UpdateProgrammingLanguageTechnologyRequest update(int id,UpdateProgrammingLanguageTechnologyRequest updateProgrammingLanguageTechnologyRequest) {
-		this.programmingLanguageTechnologyRules.checkIfProgrammingLanguageTechnologyName(updateProgrammingLanguageTechnologyRequest.getName());
+		this.programmingLanguageTechnologyRules.checkIfProgrammingLanguageNameTechnologyExistsAndIgnoreCase(updateProgrammingLanguageTechnologyRequest.getName());
+		this.programmingLanguageTechnologyRules.checkIfGetByIdProgrammingLanguageTechnology(updateProgrammingLanguageTechnologyRequest.getId());
 		ProgrammingLanguageTechnology programmingLanguageTechnology = this.modelMapperService.forRequest().map(updateProgrammingLanguageTechnologyRequest, ProgrammingLanguageTechnology.class);
 		this.programmingLanguageTechnologyRepository.save(programmingLanguageTechnology);
 		return updateProgrammingLanguageTechnologyRequest;
@@ -58,6 +59,7 @@ public class ProgrammingLanguageTechnologyManager implements ProgrammingLanguage
 
 	@Override
 	public void delete(int id) {
+		this.programmingLanguageTechnologyRules.checkIfGetByIdProgrammingLanguageTechnology(id);
 		this.programmingLanguageTechnologyRepository.deleteById(id);
 	}
 
