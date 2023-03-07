@@ -1,5 +1,10 @@
 package com.programmingLanguage.programmingLanguage.business.rules.programmingLanguageTechnologyRules.abstracts;
 
-public interface ProgrammingLanguageTechnologyRulesService {
+import com.programmingLanguage.programmingLanguage.business.dtos.request.ProgrammingLanguageTechnologyRequest.CreateProgrammingLanguageTechnologyRequest;
+import com.programmingLanguage.programmingLanguage.entities.concretes.ProgrammingLanguageTechnology;
 
+public interface ProgrammingLanguageTechnologyRulesService {
+	void checkIfProgrammingLanguageNameTechnologyExistsAndIgnoreCase(String name);
+	void checkIfProgrammingLanguageTechnologyBlankAndNull(CreateProgrammingLanguageTechnologyRequest createProgrammingLanguageTechnologyRequest);
+	ProgrammingLanguageTechnology checkIfGetByIdProgrammingLanguageTechnology(int id);
 }

@@ -5,6 +5,7 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import com.programmingLanguage.programmingLanguage.business.dtos.request.ProgrammingLanguageTechnologyRequest.CreateProgrammingLanguageTechnologyRequest;
+import com.programmingLanguage.programmingLanguage.business.rules.programmingLanguageTechnologyRules.abstracts.ProgrammingLanguageTechnologyRulesService;
 import com.programmingLanguage.programmingLanguage.core.utilities.exceptions.BusinessException;
 import com.programmingLanguage.programmingLanguage.dataAccess.abstracts.ProgrammingLanguageTechnologyRepository;
 import com.programmingLanguage.programmingLanguage.entities.concretes.ProgrammingLanguageTechnology;
@@ -13,7 +14,7 @@ import lombok.AllArgsConstructor;
 
 @Service
 @AllArgsConstructor
-public class ProgrammingLanguageTechnologyRules {
+public class ProgrammingLanguageTechnologyRules implements ProgrammingLanguageTechnologyRulesService{
 
 	private ProgrammingLanguageTechnologyRepository programmingLanguageTechnologyRepository;
 	
