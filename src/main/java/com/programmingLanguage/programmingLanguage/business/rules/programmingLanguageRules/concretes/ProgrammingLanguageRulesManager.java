@@ -5,6 +5,7 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import com.programmingLanguage.programmingLanguage.business.dtos.request.ProgrammingLanguageRequest.CreateProgrammingLanguageRequest;
+import com.programmingLanguage.programmingLanguage.business.dtos.request.ProgrammingLanguageRequest.UpdateProgrammingLanguageRequest;
 import com.programmingLanguage.programmingLanguage.business.rules.programmingLanguageRules.abstracts.ProgrammingLanguageRulesService;
 import com.programmingLanguage.programmingLanguage.core.utilities.exceptions.BusinessException;
 import com.programmingLanguage.programmingLanguage.dataAccess.abstracts.ProgrammingLanguageRepository;
@@ -29,6 +30,13 @@ public class ProgrammingLanguageRulesManager implements ProgrammingLanguageRules
 			throw new BusinessException("The programming language cannot be empty.");
 		}
 	}
+	
+	public void checkIfProgrammingLanguageBlankAndNull(UpdateProgrammingLanguageRequest updateProgrammingLanguageRequest) {
+		if(updateProgrammingLanguageRequest.getName().isBlank() || updateProgrammingLanguageRequest.getName().isEmpty()) {
+			throw new BusinessException("The programming language cannot be empty.");
+		}
+	}
+	
 	
 	public ProgrammingLanguage checkIfGetByIdProgrammingLanguage(int id) {
 		Optional<ProgrammingLanguage> programmingLanguage = this.programmingLanguageRepository.findById(id);
