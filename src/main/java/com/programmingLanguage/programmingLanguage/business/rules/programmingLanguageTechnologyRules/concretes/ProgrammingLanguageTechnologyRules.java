@@ -18,8 +18,8 @@ public class ProgrammingLanguageTechnologyRules implements ProgrammingLanguageTe
 
 	private ProgrammingLanguageTechnologyRepository programmingLanguageTechnologyRepository;
 	
-	public void checkIfProgrammingLanguageNameTechnologyExistsAndIgnoreCase(String name) {
-		if(programmingLanguageTechnologyRepository.existsByName(name) || name.equalsIgnoreCase(name)) {
+	public void checkIfProgrammingLanguageNameTechnologyExists(String name) {
+		if(programmingLanguageTechnologyRepository.existsByName(name)) {
 			throw new BusinessException("Programming Language technology already exists.");
 		}
 	}

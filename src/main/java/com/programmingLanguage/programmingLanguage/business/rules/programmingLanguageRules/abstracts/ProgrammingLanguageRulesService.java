@@ -4,7 +4,7 @@ import com.programmingLanguage.programmingLanguage.business.dtos.request.Program
 import com.programmingLanguage.programmingLanguage.entities.concretes.ProgrammingLanguage;
 
 public interface ProgrammingLanguageRulesService {
-	void checkIfProgrammingLanguageNameExistsAndIgnoreCase(String name);
+	void checkIfProgrammingLanguageNameExists(String name);
 	void checkIfProgrammingLanguageBlankAndNull(CreateProgrammingLanguageRequest createProgrammingLanguageRequest);
 	ProgrammingLanguage checkIfGetByIdProgrammingLanguage(int id);
 }

@@ -18,8 +18,8 @@ public class ProgrammingLanguageRulesManager implements ProgrammingLanguageRules
 
 	private ProgrammingLanguageRepository programmingLanguageRepository;
 	
-	public void checkIfProgrammingLanguageNameExistsAndIgnoreCase(String name) {
-		if(programmingLanguageRepository.existsByName(name) || name.equalsIgnoreCase(name)) {
+	public void checkIfProgrammingLanguageNameExists(String name) {
+		if(programmingLanguageRepository.existsByName(name)) {
 			throw new BusinessException("Programming Language already exists.");
 		}
 	}
@@ -38,4 +38,5 @@ public class ProgrammingLanguageRulesManager implements ProgrammingLanguageRules
 			throw new BusinessException("There is no programming language registered to this id number.");
 		}
 	}
+
 }
