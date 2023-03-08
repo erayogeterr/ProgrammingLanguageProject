@@ -27,6 +27,13 @@ public class ProgrammingLanguageTechnologyRules implements ProgrammingLanguageTe
 	}
 	
 	@Override
+	public void checkIfProgrammingLanguageNameTechnologyIgnoreCase(String name) {
+			if(programmingLanguageTechnologyRepository.findByNameIgnoreCase(name) != null) {
+				throw new BusinessException("Programming Language technology already exists.");
+			}
+		}
+	
+	@Override
 	public void checkIfProgrammingLanguageTechnologyBlankAndNull(CreateProgrammingLanguageTechnologyRequest createProgrammingLanguageTechnologyRequest) {
 		if(createProgrammingLanguageTechnologyRequest.getName().isBlank() || createProgrammingLanguageTechnologyRequest.getName().isEmpty()) {
 			throw new BusinessException("The programming language technology cannot be empty.");

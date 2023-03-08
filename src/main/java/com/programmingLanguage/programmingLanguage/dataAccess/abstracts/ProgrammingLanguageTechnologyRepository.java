@@ -6,4 +6,5 @@ import com.programmingLanguage.programmingLanguage.entities.concretes.Programmin
 
 public interface ProgrammingLanguageTechnologyRepository extends JpaRepository<ProgrammingLanguageTechnology, Integer> {
 	boolean existsByName(String name);
+	ProgrammingLanguageTechnology findByNameIgnoreCase(String name);
 }
