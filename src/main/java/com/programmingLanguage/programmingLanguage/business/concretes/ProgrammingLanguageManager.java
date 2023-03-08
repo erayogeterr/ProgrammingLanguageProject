@@ -42,6 +42,7 @@ public class ProgrammingLanguageManager implements ProgrammingLanguageService{
 	public CreateProgrammingLanguageRequest add(CreateProgrammingLanguageRequest createProgrammingLanguageRequest) {
 		this.programmingLanguageRulesService.checkIfProgrammingLanguageNameExists(createProgrammingLanguageRequest.getName());
 		this.programmingLanguageRulesService.checkIfProgrammingLanguageBlankAndNull(createProgrammingLanguageRequest);
+		this.programmingLanguageRulesService.checkIfProgrammingLanguageNameIgnoreCase(createProgrammingLanguageRequest.getName());
 		ProgrammingLanguage programmingLanguage = this.modelMapperService.forRequest().map(createProgrammingLanguageRequest, ProgrammingLanguage.class); // createBrandRequest // nesnesini Brand // classına maple.
 		this.programmingLanguageRepository.save(programmingLanguage);
 		return createProgrammingLanguageRequest;
@@ -52,6 +53,7 @@ public class ProgrammingLanguageManager implements ProgrammingLanguageService{
 		this.programmingLanguageRulesService.checkIfGetByIdProgrammingLanguage(updateProgrammingLanguageRequest.getId());
 		this.programmingLanguageRulesService.checkIfProgrammingLanguageBlankAndNull(updateProgrammingLanguageRequest);
 		this.programmingLanguageRulesService.checkIfProgrammingLanguageNameExists(updateProgrammingLanguageRequest.getName());
+		this.programmingLanguageRulesService.checkIfProgrammingLanguageNameIgnoreCase(updateProgrammingLanguageRequest.getName());
 		ProgrammingLanguage programmingLanguage = this.modelMapperService.forRequest().map(updateProgrammingLanguageRequest, ProgrammingLanguage.class);
 		this.programmingLanguageRepository.save(programmingLanguage);
 		return updateProgrammingLanguageRequest;

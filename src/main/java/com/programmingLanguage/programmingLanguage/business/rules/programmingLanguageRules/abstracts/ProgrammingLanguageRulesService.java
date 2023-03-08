@@ -6,6 +6,7 @@ import com.programmingLanguage.programmingLanguage.entities.concretes.Programmin
 
 public interface ProgrammingLanguageRulesService {
 	void checkIfProgrammingLanguageNameExists(String name);
+	void checkIfProgrammingLanguageNameIgnoreCase(String name);
 	void checkIfProgrammingLanguageBlankAndNull(CreateProgrammingLanguageRequest createProgrammingLanguageRequest);
 	void checkIfProgrammingLanguageBlankAndNull(UpdateProgrammingLanguageRequest updateProgrammingLanguageRequest);
 	ProgrammingLanguage checkIfGetByIdProgrammingLanguage(int id);

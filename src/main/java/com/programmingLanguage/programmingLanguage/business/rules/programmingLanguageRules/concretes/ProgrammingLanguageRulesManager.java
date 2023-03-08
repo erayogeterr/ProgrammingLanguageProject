@@ -25,6 +25,12 @@ public class ProgrammingLanguageRulesManager implements ProgrammingLanguageRules
 		}
 	}
 	
+	public void checkIfProgrammingLanguageNameIgnoreCase(String name) {
+		if(programmingLanguageRepository.findByNameIgnoreCase(name) != null) {
+			throw new BusinessException("Programming Language already exists.");
+		}
+	}
+	
 	public void checkIfProgrammingLanguageBlankAndNull(CreateProgrammingLanguageRequest createProgrammingLanguageRequest) {
 		if(createProgrammingLanguageRequest.getName().isBlank() || createProgrammingLanguageRequest.getName().isEmpty()) {
 			throw new BusinessException("The programming language cannot be empty.");
